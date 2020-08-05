@@ -97,6 +97,7 @@
                       ("CANCELLED" . ?c)))
 ;;Org Roam Configuration
 (use-package! org-roam
+  :after org
   :commands (org-roam-insert org-roam-find-file org-roam-switch-to-buffer org-roam)
   :hook
   (after-init . org-roam-mode)
@@ -132,6 +133,7 @@
   (org-journal-time-format ""))
 ;; Gotta get that sweet org-chef auto insert
 (use-package! org-chef
+  :after org
   :commands (org-chef-insert-recipe org-chef-get-recipe-from-url))
 ;;Org cite
 
@@ -211,6 +213,7 @@
 
 ;; Org Capture
 (use-package! doct
+  :after org
   :commands (doct))
 
 (after! org-capture
