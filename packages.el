@@ -48,3 +48,12 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+;
+(package! org-super-agenda :pin "dd0d104c26...")
+
+(package! org-pretty-table-mode
+  :recipe (:host github :repo "Fuco1/org-pretty-table") :pin "88380f865a...")
+
+(package! org-ref :pin "9a8053f0b0...")
+
+(package! org-chef :pin "77f97ad07b...")
