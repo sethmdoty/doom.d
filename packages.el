@@ -57,3 +57,5 @@
 (package! org-ref :pin "9a8053f0b0...")
 
 (package! org-chef :pin "77f97ad07b...")
+
+(package! doct)
