@@ -133,7 +133,7 @@
 (use-package! org-ref
    :after org
    :config
-   (setq org-ref-completion-library 'org-ref-helm-cite))
+   (setq org-ref-completion-library 'org-ref-ivy-cite))
 ;;Org SuperAgenda
 (use-package! org-super-agenda
   :commands (org-super-agenda-mode))
