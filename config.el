@@ -103,7 +103,7 @@
   (after-init . org-roam-mode)
   :init
   (setq org-roam-directory "/Users/sethdoty/org/roam/"
-        org-roam-db-location "/Users/sethdoty/org/roamorg-roam.db"
+        org-roam-db-location "/Users/sethdoty/org/roam/org-roam.db"
         org-roam-db-gc-threshold most-positive-fixnum
         org-roam-graph-exclude-matcher "private"
         org-roam-tag-sources '(prop last-directory)
@@ -114,23 +114,16 @@
      "\n-tags::\n%?"
      :file-name "%<%Y%m%d%H%M%S>-${slug}"
      :head "#+TITLE: ${title}"
-     :unnarrowed t)))
-      :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n c" . org-roam-capture)
-               ("C-c n g" . org-roam-show-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))))
+     :unnarrowed t))))
 ;; Org Journal Setup
 (use-package! org-journal
   :after org
   :custom
-  (org-journal-date-format "%e %b %Y (%A)")
+  (org-journal-date-prefix "#+title: ")
   (org-journal-enable-agenda-integration t)
-  (org-journal-dir (format "/Users/sethdoty/org/journal/" (format-time-string "%Y")))
-  (org-journal-file-format "%Y%m%d")
-  (org-journal-time-format ""))
+  (org-journal-dir (format "/Users/sethdoty/org/roam/" (format-time-string "%Y")))
+  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-date-format "%A, %d %B %Y"))
 ;; Gotta get that sweet org-chef auto insert
 (use-package! org-chef
   :after org
@@ -301,7 +294,8 @@
   (advice-add 'org-mks :override #'org-mks-pretty)
   (setq +org-capture-recipies  "/Users/sethdoty/org/org-files/cookbook.org")
   (setq +org-capture-todo-file "/Users/sethmdoty/org/org-files/todo.org")
-  (setq +org-capture-projects-file "/Users/sethmdoty/org/org-files/projects.org")
+  (setq +org-capture-central-project-notes-file "/Users/sethmdoty/org/org-files/projects.org")
+  (setq +org-capture-central-project-todo-file "/Users/sethmdoty/org/org-files/projects.org")
 
   (defun +doct-icon-declaration-to-icon (declaration)
     "Convert :icon declaration to icon"
@@ -383,12 +377,7 @@
                               ("Project-local note" :keys "n"
                                :icon ("sticky-note" :set "faicon" :color "yellow")
                                :time-or-todo "%U"
-                               :file +org-capture-project-notes-file)
-                              ("Project-local changelog" :keys "c"
-                               :icon ("list" :set "faicon" :color "blue")
-                               :time-or-todo "%U"
-                               :heading "Unreleased"
-                               :file +org-capture-project-changelog-file))
+                               :file +org-capture-project-notes-file))
                    )
                   ("\tCentralised project templates"
                    :keys "o"
@@ -407,12 +396,7 @@
                                :keys "n"
                                :time-or-todo "%U"
                                :heading "Notes"
-                               :file +org-capture-central-project-notes-file)
-                              ("Project changelog"
-                               :keys "c"
-                               :time-or-todo "%U"
-                               :heading "Unreleased"
-                               :file +org-capture-central-project-changelog-file))
+                               :file +org-capture-central-project-notes-file))
                    ))))))
 ;;
 ;; Make capture prettier
