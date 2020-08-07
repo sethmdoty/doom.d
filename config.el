@@ -19,7 +19,9 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "JetBrains Mono" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13))
+      doom-big-font (font-spec :family "JetBrains Mono" :size 24)
+      doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 13)
+      doom-serif-font (font-spec :family "Source Sans Pro" :weight 'light))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -360,6 +362,13 @@
                                :extra "\nSCHEDULED: %^{Start time:}t"
                                )
                               ))
+                  ("Cookbook" :keys "b"
+                   :icon ("checklist" :set "octicon" :color "blue")
+                   :file +org-capture-recipies
+                   :prepend t
+                   :type entry
+                   :template ("%(org-chef-get-recipe-from-url)")
+                   )
                 ("Project" :keys "p"
                  :icon ("repo" :set "octicon" :color "silver")
                    :prepend t
