@@ -298,6 +298,7 @@
   (setq +org-capture-todo-file "~/org/org-files/todo.org")
   (setq +org-capture-central-project-notes-file "~/org/org-files/projects.org")
   (setq +org-capture-central-project-todo-file "~/org/org-files/projects.org")
+  (setq +org-capture-links-file "~/org/org-files/links.org")
 
   (defun +doct-icon-declaration-to-icon (declaration)
     "Convert :icon declaration to icon"
@@ -341,6 +342,16 @@
                    :template ("* %?"
                               "%i %a")
                    )
+                  ("Cliplink" :keys "l"
+                   :icon ("sticky-note-o" :set "faicon" :color "blue")
+                   :file +org-capture-links-file
+                   :prepend t
+                   :headline "Links"
+                   :type entry
+                   :template ("* TODO %(org-cliplink-capture) \n
+                              %i %a")
+                   )
+
                   ("Tasks" :keys "k"
                    :icon ("inbox" :set "octicon" :color "yellow")
                    :file +org-capture-todo-file
