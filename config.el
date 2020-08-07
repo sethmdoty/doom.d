@@ -398,23 +398,4 @@
                                :icon ("sticky-note" :set "faicon" :color "yellow")
                                :time-or-todo "%U"
                                :file +org-capture-project-notes-file))
-                   )
-                  ("\tCentralised project templates"
-                   :keys "o"
-                   :type entry
-                   :prepend t
-                   :template ("* %{time-or-todo} %?"
-                              "%i"
-                              "%a")
-                   :children (("Project todo"
-                               :keys "t"
-                               :prepend nil
-                               :time-or-todo "TODO"
-                               :heading "Tasks"
-                               :file +org-capture-central-project-todo-file)
-                              ("Project note"
-                               :keys "n"
-                               :time-or-todo "%U"
-                               :heading "Notes"
-                               :file +org-capture-central-project-notes-file))
                    ))))))
